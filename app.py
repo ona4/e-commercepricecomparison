@@ -3,6 +3,12 @@
 from flask import Flask, request
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Users.sqlite3'
+
+db = SQLAlchemy(app)
+class Users(db.Model):
+    id = db.Column('User_ID', db.Integer, primary_key=True)
+    name = db.Column(db.String(20))
 
 @app.route("/")
 def main():
@@ -17,3 +23,4 @@ def main():
 def echo_input():
     input_text = request.form.get("user_input", "")
     return "You entered: " + input_text
+    return "asd" + name
