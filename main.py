@@ -6,9 +6,9 @@ from datetime import datetime, timezone
 import os
 import logging
 
-from app.analyzer import analyze_prices, analyze_sentiment
-from app.api import create_api_blueprint
-from app.config import get_config
+from analyzer import analyze_prices, analyze_sentiment
+from api import create_api_blueprint
+from config import get_config
 
 mongo = PyMongo()
 
