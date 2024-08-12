@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    {% if session.get('user_id') %}
+        <h1>You're already logged in</h1>
+        <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+    {% else %}
+        <h1>Register</h1>
+        <form action="{{ url_for('register') }}" method="post">
+            <input type="text" name="username" placeholder="Username" required minlength="5">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required minlength="10">
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    {% endif %}
+{% endblock %}

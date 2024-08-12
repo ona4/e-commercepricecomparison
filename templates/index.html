@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Product search{% endblock %}
+
+{% block content %}
+    <h1>Search for product</h1>
+    <form action="{{ url_for('search') }}" method="post">
+        <input type="text" name="product" placeholder="Enter product name" required>
+        <button type="submit">Search</button>
+    </form>
+{% endblock %}

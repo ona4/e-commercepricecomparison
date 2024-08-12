@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results for "{{ product }}"{% endblock %}
+
+{% block content %}
+    <p>Total results: {{ results|length }}</p>
+
+    <div class="results-container">
+        <div class="results-grid">
+            {% for result in results %}
+                <div class="result-card" data-id="{{ loop.index }}">
+                    <h3>{{ result.title }}</h3>
+                    {% if(result.site == "Search result") %}
+                    <a href="{{result.link}}" target="/">VISIT</a> 
+                    {% endif %}
+                    <p class="site">{{result.site}}</p>
+                    <p class="price">{{ result.price }}</p>
+                    <div class="similarity">
+                        <span class="stars" data-rating="{{ (result.similarity * 5)|round(1) }}"></span>
+                        <span class="score">Keyword rating :{{(result.similarity * 100)|round(2) }}%</span>
+                    </div>
+                    <button class="add-to-compare">+</button>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="compare-sidebar">
+            <h2>Product Info</h2>
+            <div id="compareList"></div>
+            <button id="compareButton" style="display:none;">Review</button>
+        </div>
+    </div>
+
+    <div id="comparisonModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h5>Product Info</h5>
+            <div id="comparisonResult"></div>
+        </div>
+    </div>
+
+    <button id="backToTop">Back to Top</button>
+    <p><a href="{{ url_for('index') }}" class="back-button">Back to Search</a></p>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='search_results.js') }}"></script>
+{% endblock %}

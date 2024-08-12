@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Recent Searches{% endblock %}
+
+{% block content %}
+    <h1>Your Recent Searches</h1>
+    {% for search in searches %}
+        <h2>{{ search.product_name }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Site</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in search.results[:12] %}
+                    <tr>
+                        <td>{{ result.site }}</td>
+                        <td>{{ result.title }}</td>
+                        <td>{{ result.price }}</td>
+                        <td><a href ="{{ result.link }}" target="#">VISIT</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+    <p><a href="{{ url_for('index') }}">Back to Search</a></p>
+{% endblock %}
