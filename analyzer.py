@@ -1,5 +1,5 @@
 import requests
-from serpapi import GoogleSearch
+from serpapi import google
 from sentence_transformers import SentenceTransformer, util
 
 model = SentenceTransformer('all-mpnet-base-v2')
@@ -68,8 +68,8 @@ def google_search(product):
         "tbm": "shop"
     }
 
-    search = GoogleSearch(params)
-    results = search.get_dict()
+    
+    results = google.search(params)
 
     google_results = []
     if "shopping_results" in results:
