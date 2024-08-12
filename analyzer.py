@@ -1,5 +1,5 @@
 import requests
-from serpapi.google_search import GoogleSearch
+from serpapi import GoogleSearch
 from sentence_transformers import SentenceTransformer, util
 
 model = SentenceTransformer('all-mpnet-base-v2')
