@@ -37,4 +37,4 @@ wadllib==1.3.6
 Werkzeug==3.0.3
 zipp==1.0.0
 requests==2.32.3
-serpapi==0.12.0
+serpapi==0.1.2
