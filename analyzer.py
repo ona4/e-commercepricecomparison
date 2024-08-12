@@ -1,5 +1,5 @@
 import requests
-from serpapi import google
+from serpapi import SerpApiClient
 from sentence_transformers import SentenceTransformer, util
 
 model = SentenceTransformer('all-mpnet-base-v2')
@@ -58,8 +58,8 @@ def monky_api_2(product):
 
 
 def google_search(product):
+    client = SerpApiClient(api_key="037d9440ed050b3014b5df805820a9b1c257bb347d81819cf73842032500c85a")
     params = {
-        "api_key": "037d9440ed050b3014b5df805820a9b1c257bb347d81819cf73842032500c85a",
         "engine": "google",
         "q": f"{product} price",
         "google_domain": "google.com",
@@ -69,7 +69,7 @@ def google_search(product):
     }
 
     
-    results = google.search(params)
+    results = client.search(params)
 
     google_results = []
     if "shopping_results" in results:
