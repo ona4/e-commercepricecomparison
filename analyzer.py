@@ -1,7 +1,7 @@
 import requests
 from serpapi import SerpApiClient
 from sentence_transformers import SentenceTransformer, util
-
+device = 'cpu'
 model = SentenceTransformer('all-mpnet-base-v2')
 
 
